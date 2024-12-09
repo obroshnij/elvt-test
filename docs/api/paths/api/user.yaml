@@ -1,0 +1,52 @@
+post:
+  description: Create a user
+  summary: Create a user from params
+  operationId: createUser
+  security: []
+  tags:
+    - Auth
+  requestBody:
+    content:
+      'application/json':
+        schema:
+          type: object
+          properties:
+            email:
+              type: string
+            password:
+              type: string
+          required:
+            - email
+            - password
+  responses:
+    '201':
+      description: Created
+get:
+  description: Get current user
+  summary: Get data about currently logged in USer
+  operationId: getUser
+  tags:
+    - User
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              user:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    example: 10050
+                  email:
+                    type: string
+                    example: john@doe.com
+                  stats:
+                    type: object
+                    properties:
+                      total_games_played:
+                        type: number
+                        example: 5

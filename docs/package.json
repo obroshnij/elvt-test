@@ -1,0 +1,14 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "view": "redocly preview-docs -p 5000 api/openapi.yaml"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@redocly/cli": "^1.26.0"
+  }
+}

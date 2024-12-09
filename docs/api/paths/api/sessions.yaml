@@ -1,0 +1,38 @@
+post:
+  description: Sign in
+  summary: Log in user using email + password
+  operationId: signIn
+  security: []
+  tags:
+    - Auth
+  requestBody:
+    content:
+      'application/json':
+        schema:
+          type: object
+          properties:
+            email:
+              type: string
+              example: john@doe.com
+            password:
+              type: string
+              example: IAmPassword1234
+          required:
+            - email
+            - password
+  responses:
+    '200':
+      description: OK
+      headers:
+        accessToken:
+          schema:
+            type: string
+        client:
+          schema:
+            type: string
+        uid:
+          schema:
+            type: string
+        tokenType:
+          schema:
+            type: string
