@@ -28,3 +28,4 @@ rails s
 ```
 
 # Run tests
+```rspec spec```
