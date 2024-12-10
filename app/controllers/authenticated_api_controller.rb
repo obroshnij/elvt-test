@@ -1,0 +1,2 @@
+class AuthenticatedApiController < ApiController
+end
