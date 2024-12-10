@@ -1,5 +1,7 @@
 module Api
   class RegistrationsController < ApiController
+    allow_unauthenticated_access
+
     rescue_from Users::Errors::UserDataIsNotValidError, with: :handle_user_creation_failed_error
 
     def create

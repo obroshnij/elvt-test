@@ -1,4 +1,6 @@
 class ApiController < ActionController::API
+  include ApiAuthentication
+
   rescue_from StandardError, with: :handle_internal_server_error
 
   private

@@ -23,16 +23,11 @@ post:
   responses:
     '200':
       description: OK
-      headers:
-        accessToken:
+      content:
+        application/json:
           schema:
-            type: string
-        client:
-          schema:
-            type: string
-        uid:
-          schema:
-            type: string
-        tokenType:
-          schema:
-            type: string
+            type: object
+            properties:
+              token:
+                type: string
+                example: "iodsbv73gvb76w6tf3vyt6fv68sgd79fgvsdgv3"
