@@ -11,6 +11,9 @@ This project is a solution to home assignment https://you.ashbyhq.com/elevate-la
 
 # Run API
 ## For the 1st time
+0) Assuming you have on your machine
+  - `ruby` (recommended 3.3.2 but anything around version 3 should work). Feel free to use https://rvm.io/ to get started with that. Once you install rvm, you would just need to `cd` into the project folder and follow the prompts
+  - `postgresql` (see `config/database.yml` to place your credentials for that). You may use `brew` to install `postgresql`
 1) go to the project root
 2) execute
 ```
