@@ -5,7 +5,7 @@ module Api
     def create
       Users.create(**creation_params)
 
-      render json: {}, status: :accepted
+      render json: {}, status: :created
     end
 
     private

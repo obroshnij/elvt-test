@@ -17,7 +17,7 @@ RSpec.describe "api/user" do
       it "creates a user" do
         expect { make_request }.to change(User, :count).by(1)
 
-        expect(response).to have_http_status(:accepted)
+        expect(response).to have_http_status(:created)
       end
     end
 
