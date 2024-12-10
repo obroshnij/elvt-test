@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "api/user" do
+RSpec.describe "api/user", type: :request do
   let(:path) { "/api/user" }
 
   describe "POST" do
@@ -88,6 +88,29 @@ RSpec.describe "api/user" do
             "error" => "User creation failed, please fix the the following error and try again. Error: Validation failed: Email has already been taken"
           })
         end
+      end
+    end
+  end
+
+  describe "GET" do
+    let!(:user) { create(:user) }
+    let(:auth_headers) { {} }
+
+    subject(:make_request) { get path, headers: auth_headers }
+
+    context "when authenticated" do
+      include_context "with authenticated request"
+
+      it "retrieves user from db" do
+        make_request
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context "when NOT authenticated" do
+      it "renders error" do
+        make_request
+        expect(response).to have_http_status(:unauthorized)
       end
     end
   end

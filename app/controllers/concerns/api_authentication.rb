@@ -14,6 +14,10 @@ module ApiAuthentication
 
   private
 
+  def current_user
+    Current.user
+  end
+
   def authenticated?
     resume_session
   end
@@ -31,11 +35,12 @@ module ApiAuthentication
   end
 
   def request_token
-    request.headers[:token]
+    _head, tail = request.headers[:authorization]&.split(" ")
+    tail
   end
 
   def request_authentication
-    render json: { error: "Authentication required" }, status: :unauthenticated
+    render json: { error: "Authentication required" }, status: :unauthorized
   end
 
   def start_new_session_for(user)

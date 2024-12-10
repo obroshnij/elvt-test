@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   namespace :api, constraints: { format: "json" } do
     post "user", to: "registrations#create"
     post "sessions", to: "sessions#create"
+
+    resource :user, only: :show
   end
 
   resource :session
