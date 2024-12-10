@@ -17,9 +17,9 @@ module Users
     private
 
     def create_game_event!
-      user.game_events.create!(
+      user.user_game_events.create!(
         game: game,
-        type: game_event_type,
+        game_event_type: game_event_type,
         occured_at: parsed_occured_at
       )
     rescue ActiveModel::ValidationError, ActiveRecord::RecordNotUnique, ActiveRecord::RecordInvalid => e
@@ -29,7 +29,7 @@ module Users
     end
 
     def game_event_type
-      return event_type if UserGameEvent::EventTypes.include?(event_type)
+      return event_type if UserGameEvent::EventTypes::ALL.include?(event_type)
       
       GAME_EVENT_TYPE_PARAM_MAP[event_type]
     end

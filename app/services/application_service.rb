@@ -4,17 +4,15 @@ class ApplicationService
     class NotImplementedError < Error; end
   end
 
-  class << self
-    def call(**)
-      instance = new(**)
-      instance.call
-      instance
-    end
+  def self.call(**)
+    instance = new(**)
+    instance.call
+    instance
   end
 
   def initialize(**kwargs)
     kwargs.each do |k, v|
-      self.instance_variable_set("@#{k}", v)
+      self.instance_variable_set("@#{k}", v) if defined?(k)
     end
   end
 

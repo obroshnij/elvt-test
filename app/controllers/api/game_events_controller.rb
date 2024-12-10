@@ -8,7 +8,7 @@ module Api
         occured_at: create_params[:occured_at]
       )
 
-      render status: :ok
+      render json: {}, status: :ok
     end
 
     private

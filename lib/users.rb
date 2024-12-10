@@ -7,6 +7,6 @@ module Users
   end
 
   def create_game_event(user:, game:, event_type:, **)
-    CreateGameEventService.call(**)
+    CreateGameEventService.call(user:, game:, event_type:, **)
   end
 end
