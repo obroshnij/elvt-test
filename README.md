@@ -28,4 +28,15 @@ rails s
 ```
 
 # Run tests
-```rspec spec```
+```bundle exec rspec spec```
+
+# Authentication
+To make authenticated request, just make sure to sign your user in using
+`POST auth/sessions` with `email` and `password` in params. Get the `token` from `response.body` and attach it as a header to an authenticated endpoint request:
+`Authorization: Bearer <your token goes here>`
+
+# Implementation details
+
+This is `rails8` project running on `ruby-3.3.2`. 
+We use `postgres` as database and Bearer authentication schema. 
+There is api doc available in `docs` folder that can be rendered on demand. 

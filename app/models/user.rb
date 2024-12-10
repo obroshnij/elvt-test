@@ -9,7 +9,8 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 8, maximum: 128 }, if: -> { new_record? || !password.nil? }
   validates :password, format: { with: /\A(?=.*\d)(?=.*[A-Z])(?=.*[\W]).+\z/, message: "must include at least one uppercase letter, one digit, and one special character" }, if: -> { password.present? }
 
+  # @return Integer
   def total_games_played
-    3
+    user_game_events.size
   end
 end

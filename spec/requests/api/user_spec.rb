@@ -94,6 +94,7 @@ RSpec.describe "api/user", type: :request do
 
   describe "GET" do
     let!(:user) { create(:user) }
+    let!(:user_game_event) { create(:user_game_event, user: user) }
     let(:auth_headers) { {} }
 
     subject(:make_request) { get path, headers: auth_headers }
@@ -109,7 +110,7 @@ RSpec.describe "api/user", type: :request do
             "id" => user.id,
             "email" => user.email,
             "stats" => {
-              "total_games_played" => 3
+              "total_games_played" => 1
             }
           }
         )

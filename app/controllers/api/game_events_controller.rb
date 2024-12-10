@@ -1,5 +1,7 @@
 module Api
   class GameEventsController < AuthenticatedApiController
+    rescue_from Users::Errors::GameEventDataIsNotValidError, with: :handle_game_event_data_invalid_error
+
     def create
       Users.create_game_event(
         user: current_user,
@@ -19,7 +21,11 @@ module Api
 
     # memoize if called several times here
     def game
-      Game.find(create_params[:game_id])
+      Game.find_by(id: create_params[:game_id])
+    end
+
+    def handle_game_event_data_invalid_error(exception)
+      render json: { error: "Game event creation failed, please fix the the following error and try again. Error: #{exception.message}" }, status: :forbidden
     end
   end
 end

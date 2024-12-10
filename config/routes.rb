@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     post "sessions", to: "sessions#create"
 
     resource :user, only: :show do
-      resources :game_events, only: [:create]
+      resources :game_events, only: [ :create ]
     end
   end
 

@@ -1,4 +1,10 @@
 module Users
+  # Service for creating users
+  #   @param email    String
+  #   @param password String
+  #
+  # @method user  Returns created user
+  #
   class CreateService < ApplicationService
     attr_accessor :email, :password
 

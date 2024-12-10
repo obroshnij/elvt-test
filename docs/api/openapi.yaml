@@ -9,31 +9,11 @@ info:
     OpenAPI specification of game server API
 components:
   securitySchemes:
-    accessToken:
-      type: apiKey
-      in: header
-      name: Access-Token
-      description: Access-Token
-    client:
-      type: apiKey
-      in: header
-      name: Client
-      description: Client
-    tokenType:
-      type: apiKey
-      in: header
-      name: Token-Type
-      description: Token type must be set to `Bearer` always
-    uid:
-      type: apiKey
-      in: header
-      name: uid
-      description: User email
+    BearerAuth:
+      type: http
+      scheme: Bearer <token>
 security:
-  - accessToken: []
-    client: []
-    tokenType: []
-    uid: []
+  - BearerAuth: []
 tags:
   - name: User
     description: Operations about user

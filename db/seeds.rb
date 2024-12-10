@@ -7,3 +7,7 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+[ "tic tac toe", "tag", "flappy bird" ].each do |game_name|
+  Game.create!(name: game_name)
+end
