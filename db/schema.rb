@@ -10,9 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_09_232533) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_10_021842) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "games", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "sessions", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -22,6 +28,18 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_09_232533) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
+  create_table "user_game_events", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "game_id", null: false
+    t.datetime "occured_at", null: false
+    t.string "game_event_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_event_type"], name: "index_user_game_events_on_game_event_type"
+    t.index ["game_id"], name: "index_user_game_events_on_game_id"
+    t.index ["user_id"], name: "index_user_game_events_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
