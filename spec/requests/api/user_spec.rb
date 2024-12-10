@@ -104,6 +104,15 @@ RSpec.describe "api/user", type: :request do
       it "retrieves user from db" do
         make_request
         expect(response).to have_http_status(:ok)
+        expect(JSON.parse(response.body)).to eq(
+          "user" => {
+            "id" => user.id,
+            "email" => user.email,
+            "stats" => {
+              "total_games_played" => 3
+            }
+          }
+        )
       end
     end
 
